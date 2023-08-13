@@ -54,7 +54,7 @@ function pages() {
 }
 
 function styles() {
-  return src('src/sass/*.sass')
+  return src(['src/sass/*.sass', '!src/sass/nullstyle.sass', '!src/sass/fonts.sass'])
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('style.min.css'))
