@@ -8,9 +8,10 @@ const imagemin = require('gulp-imagemin')
 const ttf2woff2 = require('gulp-ttf2woff2')
 const fonter = require('gulp-fonter')
 const include = require('gulp-include')
+const fs = require('fs')
 
 function images() {
-  return src('src/assets/images/*')
+  return src(['src/assets/images/*', 'src/assets/icons/*'])
     .pipe(imagemin())
     .pipe(dest('./dist/images'))
 }
@@ -23,6 +24,25 @@ function fonts() {
     .pipe(src(['src/assets/fonts/*.ttf']))
     .pipe(ttf2woff2())
     .pipe(dest('./dist/fonts'));
+}
+
+function fontsStyle() {
+  const FILE_PATH = 'src/sass/fonts.sass'
+  const cb = () => {}
+
+  fs.writeFile(FILE_PATH, '', cb)
+    return fs.readdir('dist/fonts', function (_err, items) {
+      if (items) {
+        let c_fontname;
+        for (let i = 0; i < items.length; i++) {
+          let fontname = items[i].split('.')[0];
+          if (c_fontname !== fontname) {
+            fs.appendFile(FILE_PATH, '@include font("' + fontname + '", "' + fontname + '", "400", "normal")\r\n', cb)
+          }
+          c_fontname = fontname;
+        }
+      }
+    })
 }
 
 function pages() {
@@ -63,9 +83,10 @@ function cleanDist() {
 
 exports.images = images
 exports.fonts = fonts
+exports.fontsStyle = fontsStyle
 exports.styles = styles
 exports.scripts = scripts
 exports.pages = pages
 exports.watching = watching
 
-exports.default = series(cleanDist, parallel(images, fonts, styles, scripts, pages, watching))
+exports.default = series(cleanDist, parallel(images, series(fonts, fontsStyle), styles, scripts, pages, watching))
