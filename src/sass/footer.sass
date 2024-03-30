@@ -1,0 +1,166 @@
+footer
+    position: relative
+    padding-top: 200px
+    overflow: hidden
+    z-index: 1
+    & .footer
+        position: relative
+        background: $base-color
+        & .footer__moon
+            position: absolute
+            top: -200px
+            left: 52%
+            transform: translateX(-50%)
+            z-index: -1
+            @media screen and (max-width: 700px)
+                width: 735px
+        & .footer__content
+            display: grid
+            grid-template-areas: 'a b c''a d c''e f g'
+            padding: 50px 0 25px
+            justify-content: space-between
+            @media screen and (max-width: 1200px)
+                grid-template-areas: 'a b b''a c c''d d d''x y f''e z g'
+            @media screen and (max-width: 700px)
+                display: block
+                padding: 25px 0 15px
+            & .footer__logo
+                grid-area: a
+                width: 139px
+                cursor: pointer
+            & .footer__links
+                grid-area: b
+                display: flex
+                gap: 32px
+                @media screen and (max-width: 1200px)
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+                    grid-template-rows: 1fr 1fr
+                    justify-content: space-between
+                    gap: 10px
+                @media screen and (max-width: 700px)
+                    margin-top: 48px
+                    grid-template-columns: unset
+                    grid-template-rows: unset
+                    gap: 16px
+                & > a
+                    position: relative
+                    font-family: PTSans-Bold
+                    font-size: 20px
+                    line-height: 24px
+                    &::after
+                        content: ''
+                        position: absolute
+                        left: 0
+                        bottom: -4px
+                        height: 1px
+                        width: 0%
+                        background: $text-color
+                        transition: width 0.2s
+                    &:hover::after
+                        width: 100%
+            & .footer__buttons
+                grid-area: d
+                margin: 50px 0
+                display: flex
+                @media screen and (max-width: 700px)
+                    flex-wrap: wrap
+                    gap: 20px 0
+                    justify-content: center
+                & button
+                    position: relative
+                    width: 56px
+                    height: 56px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    border-radius: 28px
+                    border: solid 1px transparent
+                    background-origin: border-box
+                    background-clip: content-box, border-box
+                    background-image: linear-gradient($base-color, $base-color), linear-gradient(to right, #780BF5, #25C6F9)
+                    &::before
+                        content: ''
+                        position: absolute
+                        top: 0
+                        left: 0
+                        width: 100%
+                        height: 100%
+                        border-radius: 28px
+                        background: linear-gradient(90deg, $gradient-color, #25C6F9)
+                        opacity: 0
+                        transition: opacity .2s
+                        z-index: 0
+                    &:hover::before
+                        opacity: 1
+                    & > *
+                        z-index: 1
+                & .footer__support-button
+                    width: 214px
+                    @media screen and (max-width: 1200px)
+                        flex-grow: 1
+                    @media screen and (max-width: 700px)
+                        width: 100%
+                & .footer__google-play-button
+                    width: 152px
+                    @media screen and (max-width: 1200px)
+                        flex-grow: 1
+
+            & .footer__info-block
+                grid-area: c
+                @media screen and (max-width: 1200px)
+                    margin-top: 50px
+                    display: grid
+                    grid-template-areas: 'mail phone''mail address'
+                    justify-content: space-between
+                @media screen and (max-width: 700px)
+                    margin-top: 48px
+                    display: block
+                & .footer__mail
+                    display: block
+                    grid-area: mail
+                    color: $text-accent
+                    font-family: PTSans-Bold
+                    font-size: 20px
+                    line-height: 24px
+                & .footer__phone
+                    display: block
+                    grid-area: phone
+                    margin-top: 50px
+                    @media screen and (max-width: 1200px)
+                        margin-top: 0
+                    @media screen and (max-width: 700px)
+                        margin-top: 24px
+                & .footer__address
+                    display: block
+                    grid-area: address
+                    margin-top: 10px
+                    width: 200px
+                    opacity: 0.4
+                    @media screen and (max-width: 700px)
+                        margin-top: 8px
+
+            & .footer__company
+                grid-area: e
+                @media screen and (max-width: 1200px)
+                    margin-right: 300px
+                @media screen and (max-width: 1000px)
+                    margin-right: 0
+            & .footer__terms
+                grid-area: f
+                @media screen and (max-width: 700px)
+                    display: block
+            & .footer__privacy
+                grid-area: g
+                @media screen and (max-width: 1200px)
+                    margin-top: 8px
+                @media screen and (max-width: 700px)
+                    display: block
+                    margin-top: 8px
+            & .footer__small-text
+                font-size: 14px
+                line-height: 17px
+                opacity: 0.4
+                @media screen and (max-width: 700px)
+                    display: block
+                    margin-top: 8px

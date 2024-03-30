@@ -1,0 +1,136 @@
+.header
+    position: relative
+    transition: .3s
+    z-index: 4
+
+    & .wrapper
+        position: relative
+        padding-block: 16px
+        min-height: 77px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        z-index: 2
+        @media screen and (max-width: 1000px)
+            padding-block: 24px
+            min-height: 93px
+        @media screen and (max-width: 700px)
+            padding-block: 16px
+            gap: 10px
+            min-height: unset
+
+        & .header__menu
+            display: flex
+            gap: 40px
+            @media screen and (max-width: 1000px)
+                gap: 32px
+            @media screen and (max-width: 700px)
+                position: absolute
+                opacity: 0
+                top: 0
+                left: 0
+                width: 100dvw
+                height: 100dvh
+                flex-direction: column
+                align-items: center
+                justify-content: center
+                gap: 0
+                font-size: 60px
+                line-height: 120%
+                font-family: RussoOne-Regular
+                background: #fff
+                transition: opacity .5s, display .5s
+
+            & a
+                position: relative
+                @media screen and (max-width: 700px)
+                    pointer-events: none
+                &::after
+                    content: ''
+                    position: absolute
+                    left: 0
+                    bottom: -4px
+                    height: 1px
+                    width: 0%
+                    background: $text-color
+                    transition: width 0.2s
+                &:hover::after
+                    width: 100%
+
+        & .header__logo
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            cursor: pointer
+            @media screen and (max-width: 700px)
+                position: static
+                transform: translateX(0)
+
+        & .header__button
+            padding: 8px 40px 10px
+            @media screen and (max-width: 700px)
+                display: none
+
+        & .header__burger-wrapper
+            display: none
+            height: 48px
+            width: 48px
+            flex-shrink: 0
+            justify-content: center
+            align-items: center
+            border-radius: 50%
+            background: rgba(255, 255, 255, 0.20)
+            backdrop-filter: blur(28px)
+            transition: background .2s 
+            @media screen and (max-width: 700px)
+                display: flex
+
+            & .header__burger, & .header__burger::after, & .header__burger::before
+                position: absolute
+                display: block
+                width: 16px
+                height: 1px
+                background: $text-color
+                transition: transform .3s
+
+            & .header__burger::after
+                content: ''
+                top: 5px
+            & .header__burger::before
+                content: ''
+                bottom: 5px
+
+    &.sticky
+        position: sticky
+        top: 0
+        background: $base-color
+        z-index: 2
+
+    &.modal
+        & .header__menu
+            @media screen and (max-width: 700px)
+                opacity: 1
+            @media screen and (max-width: 450px)
+                font-size: 44px
+            & a
+                display: block
+                color: $base-color
+                width: fit-content
+                pointer-events: initial
+                &:not(:first-child)
+                    margin-top: 40px
+                &::after
+                    background: $base-color
+                    height: 3px
+                    
+
+        & .header__burger-wrapper
+            background: $base-color
+            & .header__burger::after
+                transform: rotate(45deg) translateY(-50%)
+                top: 0
+            & .header__burger::before
+                transform: rotate(-45deg) translateY(50%)
+                bottom: 0
+            & .header__burger
+                height: 0

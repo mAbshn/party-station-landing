@@ -1,0 +1,59 @@
+.quotes
+    margin-top: 128px
+    & .quotes__slide
+        padding: 56px 90px 56px 113px
+        height: 466px
+        display: flex
+        gap: 48px
+        justify-content: space-between
+        border-radius: 24px
+        background: radial-gradient(circle at 20% -50%, $gradient-color 0%, rgba(128,11,245,0.23) 50%, rgba(128,11,245,0.08) 65%, rgba(128,11,245,0.08) 73%, rgba(128,11,245,0) 90%)
+        @media screen and (max-width: 1000px)
+            padding: 75px 40px 40px
+            flex-direction: column
+            height: unset
+        @media screen and (max-width: 700px)
+            padding: 56px 20px 40px 20px
+            gap: 32px
+        & blockquote
+            position: relative
+            max-width: 670px
+            font-family: PTSans-Bold
+            font-size: 32px
+            line-height: 42px
+            @media screen and (max-width: 700px)
+                font-size: 20px
+                line-height: 130%
+            &::before
+                content: url('./assets/images/quote.svg')
+                position: absolute
+                top: 0
+                left: -55px
+                @media screen and (max-width: 1000px)
+                    top: -42px
+                    left: 0
+        & .quotes__person
+            margin-top: 10px
+            width: 220px
+            @media screen and (max-width: 1000px)
+                margin-top: 0
+            & .quotes__name
+                font-size: 20px
+                line-height: 24px
+            & .quotes__photo
+                margin-top: 16px
+                width: 64px
+                height: 64px
+                background: $gradient-color
+                border-radius: 50%
+                overflow: hidden
+
+    & .quotes__buttons
+        position: absolute
+        bottom: 55px
+        left: 113px
+        z-index: 1
+        @media screen and (max-width: 1000px)
+            right: 55px
+            bottom: 43px
+            left: unset

@@ -1,11 +1,178 @@
 @import "nullstyle"
+@import "_colors"
 
 @mixin font($font_name, $file_name, $weight, $style)
     @font-face
         font-family: $font-name
         font-display: swap
-        src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2")
+        src: url("./assets/fonts/#{$file_name}.woff") format("woff"), url("./assets/fonts/#{$file_name}.woff2") format("woff2")
         font-weight: #{$weight}
         font-style: #{$style}
 
 @import "fonts"
+
+body
+    overflow-x: hidden
+
+.no-scroll
+    overflow: hidden
+
+.root
+    background: $base-color
+    color: $text-color
+    font-family: PTSans-Regular
+    font-size: 16px
+    line-height: 120%
+
+.wrapper
+    position: relative
+    padding: 0 60px
+    max-width: 1440px
+    margin-inline: auto
+    @media screen and (max-width: 1000px)
+        padding: 0 40px
+    @media screen and (max-width: 700px)
+        padding: 16px
+
+.gradient-button
+        padding: 18px 40px 19px
+        border-radius: 56px
+        background: linear-gradient(90deg, $gradient-color 0%, #25C6F9 100%)
+        transition: box-shadow 0.2s
+        @media screen and (max-width: 700px)
+            padding: 14px 40px 15px
+        &:hover
+            box-shadow: 0px 0px 10px 7px rgba(37, 198, 249, 0.2)
+
+.game-card
+    height: 180px !important
+    border-radius: 24px
+    background-position: center
+    background-size: 100%
+    background-repeat: no-repeat
+    &.svintus
+        background-image: url(assets/images/svintus.png)
+    &.kviz
+        background-image: url(assets/images/kviz.png)
+    &.truth-or-dare
+        background-image: url(assets/images/truth-or-dare.png)
+    &.imaginarium
+        background-image: url(assets/images/imaginarium.png)
+
+.step
+    position: relative
+    width: 424px
+    height: 424px
+    @media screen and (max-width: 1200px)
+        width: 336px
+        height: 336px
+    & > p
+        position: absolute
+        top: 164px
+        width: 312px
+        font-size: 20px
+        line-height: 120%
+        @media screen and (max-width: 1200px)
+            top: 100px
+            width: 280px
+    & > h3
+        position: relative
+        height: 100%
+        width: 100%
+        border-radius: 50%
+        overflow: hidden
+        & > p
+            position: absolute
+            width: fit-content
+            bottom: 0px
+            left: 50%
+            transform: translateX(-50%)
+            font-size: 120px
+            line-height: 75px
+            color: $base-color
+            font-family: RussoOne-Regular
+            z-index: 1
+        &::after
+            content: ''
+            position: absolute
+            width: 100%
+            height: 100%
+            left: 150px
+            top: 220px
+            background: $gradient-color
+            filter: blur(80px)
+            opacity: 0.5
+
+.section-headline
+    position: relative
+    display: flex
+    gap: 177px
+    z-index: 1
+    @media screen and (max-width: 1000px)
+        flex-direction: column
+        gap: 56px
+    @media screen and (max-width: 700px)
+        gap: 32px
+    & > p
+        padding: 7px 16px
+        height: fit-content
+        width: fit-content
+        border-radius: 48px
+        border: 1px solid rgba(255, 255, 255, 0.2)
+        letter-spacing: 1.4px
+        text-transform: uppercase
+        opacity: 0.6
+        font-size: 14px
+        user-select: none
+        flex-shrink: 0
+    & > h2
+        width: 720px
+        font-family: RussoOne-Regular
+        font-size: 40px
+        line-height: 120%
+        @media screen and (max-width: 1000px)
+            font-size: 32px
+            max-width: 700px
+            width: 100%
+
+.purple-glow
+    position: absolute
+    border-radius: 50%
+    background: linear-gradient(89deg, $gradient-color, #25C6F9)
+    filter: blur(300px)
+    z-index: 0
+
+.slider-controls
+    display: flex
+    gap: 8px
+    & > button
+        width: 56px
+        height: 56px
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 50%
+        border: solid 1px transparent
+        background-origin: border-box
+        background-clip: content-box, border-box
+        background-image: linear-gradient(#3c0981, #3c0981), linear-gradient(to top, #780BF5, #25C6F9)
+        & > img
+            height: 20px
+            transition: height .1s
+        &:first-child > img
+            transform: rotate(180deg)
+        &:hover > img
+            height: 28px
+
+
+@import "header"
+@import "introducing"
+@import "steps"
+@import "games"
+@import "sliders"
+@import "price"
+@import "advantages"
+@import "quotes"
+@import "faq"
+@import "partners"
+@import "footer"

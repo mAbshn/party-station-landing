@@ -1,3 +1,4 @@
+
 {
   "name": "party-station",
   "version": "1.0.0",
@@ -18,15 +19,15 @@
   "homepage": "https://github.com/mAbshn/party-station-landing#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-fonter": "^0.3.0",
-    "gulp-imagemin": "^7.1.0",
-    "gulp-include": "^2.4.1",
-    "gulp-sass": "^5.1.0",
-    "gulp-ttf2woff2": "^4.0.1",
-    "gulp-uglify": "^3.0.2",
-    "sass": "^1.64.1"
+    "gulp-autoprefixer": "8.0.0",
+    "gulp-clean": "0.4.0",
+    "gulp-concat": "2.6.1",
+    "gulp-fonter": "0.3.0",
+    "gulp-imagemin": "7.1.0",
+    "gulp-include": "2.4.1",
+    "gulp-sass": "5.1.0",
+    "gulp-ttf2woff2": "4.0.1",
+    "gulp-uglify": "3.0.2",
+    "sass": "1.64.1"
   }
 }

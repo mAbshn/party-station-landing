@@ -11,9 +11,14 @@ const include = require('gulp-include')
 const fs = require('fs')
 
 function images() {
-  return src(['src/assets/images/*', 'src/assets/icons/*'])
+  return src('src/assets/images/*')
     .pipe(imagemin())
-    .pipe(dest('./dist/images'))
+    .pipe(dest('./dist/assets/images'))
+}
+
+function videos() {
+  return src('src/assets/videos/*')
+    .pipe(dest('./dist/assets/videos'))
 }
 
 function fonts() { 
@@ -23,7 +28,7 @@ function fonts() {
     }))
     .pipe(src(['src/assets/fonts/*.ttf']))
     .pipe(ttf2woff2())
-    .pipe(dest('./dist/fonts'));
+    .pipe(dest('./dist/assets/fonts'));
 }
 
 function fontsStyle() {
@@ -31,15 +36,15 @@ function fontsStyle() {
   const cb = () => {}
 
   fs.writeFile(FILE_PATH, '', cb)
-    return fs.readdir('dist/fonts', function (_err, items) {
+    return fs.readdir('dist/assets/fonts', function (_err, items) {
       if (items) {
-        let c_fontname;
+        let c_fontname
         for (let i = 0; i < items.length; i++) {
-          let fontname = items[i].split('.')[0];
+          let fontname = items[i].split('.')[0]
           if (c_fontname !== fontname) {
             fs.appendFile(FILE_PATH, '@include font("' + fontname + '", "' + fontname + '", "400", "normal")\r\n', cb)
           }
-          c_fontname = fontname;
+          c_fontname = fontname
         }
       }
     })
@@ -54,7 +59,7 @@ function pages() {
 }
 
 function styles() {
-  return src(['src/sass/*.sass', '!src/sass/nullstyle.sass', '!src/sass/fonts.sass'])
+  return src('src/sass/index.sass')
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('style.min.css'))
@@ -70,6 +75,7 @@ function scripts() {
 
 function watching() {
   watch(['src/assets/images/*'], images)
+  watch(['src/assets/videos/*'], videos)
   watch(['src/assets/fonts/*'], fonts)
   watch(['src/sass/*.sass'], styles)
   watch(['src/js/*.js'], scripts)
@@ -82,6 +88,7 @@ function cleanDist() {
 }
 
 exports.images = images
+exports.videos = videos
 exports.fonts = fonts
 exports.fontsStyle = fontsStyle
 exports.styles = styles
@@ -89,4 +96,4 @@ exports.scripts = scripts
 exports.pages = pages
 exports.watching = watching
 
-exports.default = series(cleanDist, parallel(images, series(fonts, fontsStyle), styles, scripts, pages, watching))
+exports.default = series(cleanDist, parallel(images, videos, series(fonts, fontsStyle), styles, scripts, pages, watching))

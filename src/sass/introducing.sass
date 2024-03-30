@@ -1,0 +1,210 @@
+.introducing
+    position: relative
+    margin-top: 60px
+    padding-bottom: 96px
+    @media screen and (max-width: 1000px)
+        margin-top: 48px
+    @media screen and (max-width: 700px)
+        margin-top: 40px
+    & .introducing__headline
+        position: relative
+        font-family: RussoOne-Regular
+        font-size: 64px
+        line-height: 100%
+        z-index: 1
+        & span
+            background: linear-gradient(89deg, $gradient-color 0%, #25C6F9 100%)
+            background-clip: text
+            color: transparent
+        @media screen and (max-width: 700px)
+            font-size: 40px
+    & .introducing__price-info
+        position: relative
+        margin-top: 32px
+        font-size: 20px
+        line-height: 120%
+        z-index: 1
+        & span
+            color: $text-accent
+        @media screen and (max-width: 700px)
+            margin-top: 16px
+            font-size: 18px
+    & .introducing__image-planet
+        position: absolute
+        top: 37px
+        left: 361px
+        @media screen and (max-width: 1000px)
+            top: 250px
+            left: 50%
+            transform: translateX(-50%)
+        @media screen and (max-width: 700px)
+            top: 170px
+            width: 506px
+    & .introducing__image-blue-ghost
+        position: absolute
+        top: -26px
+        right: -4px
+        animation-name: flying-blue-ghost
+        animation-duration: 5s
+        animation-iteration-count: infinite
+        animation-timing-function: linear
+        @media screen and (max-width: 1000px)
+            top: 50px
+        @media screen and (max-width: 700px)
+            width: 96px
+            top: 120px
+            animation-name: flying-blue-ghost-small
+    & .introducing__blue-glow
+        position: absolute
+        right: -544px
+        top: -388px
+        width: 910px
+        height: 910px
+        border-radius: 910px
+        background: #04C3FF
+        filter: blur(600px)
+        @media screen and (max-width: 1000px)
+            right: -800px
+    & .introducing__purple-glow
+        position: absolute
+        left: -444px
+        top: 96px
+        width: 1124px
+        height: 656px
+        border-radius: 50%
+        background: $gradient-color
+        filter: blur(300px)
+        z-index: 0
+    & .introducing__mail-field
+        position: relative
+        margin-top: 108px
+        width: 100%
+        display: flex
+        @media screen and (max-width: 1000px)
+            margin-top: 323px
+        @media screen and (max-width: 700px)
+            margin-top: 180px
+        & .introducing__mail-send
+            width: 96px
+            height: 96px
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-shrink: 0
+            background-color: rgba(255, 255, 255, 0.20)
+            border-radius: 50%
+            backdrop-filter: blur(28px)
+            transition: background-color 0.2s
+            &:hover
+                background-color: rgba(255, 255, 255, 0.40)
+            &:active
+                border: 1px solid white
+            @media screen and (max-width: 700px)
+                height: 48px
+                width: 48px
+
+        & input
+            padding: 35px 40px 37px
+            height: 96px
+            flex-grow: 1
+            background: rgba(255, 255, 255, 0.20)
+            border-radius: 48px
+            backdrop-filter: blur(28px)
+            font-size: 20px
+            font-family: PTSans-Regular
+            caret-color: $text-color
+            color: $text-color
+            &::placeholder
+                color: $text-color
+                opacity: 0.4
+            &:focus-visible
+                outline: none
+                border: 1px solid white
+                padding: 35px 39px 37px
+            @media screen and (max-width: 700px)
+                height: 48px
+                padding: 12px 14px 14px
+                font-size: 18px
+                line-height: 20px
+                &:focus-visible
+                    padding: 14px
+
+        & .introducing__image-yellow-ghost
+            position: absolute
+            animation-name: flying-yellow-ghost
+            animation-duration: 7s
+            animation-iteration-count: infinite
+            animation-timing-function: linear
+            @media screen and (max-width: 1000px)
+                left: 20px
+                top: -20px
+            @media screen and (max-width: 1000px)
+                width: 90px
+                top: -25px
+
+    & .introducing__top-games
+        position: relative
+        margin-top: 34px
+        display: flex
+        gap: 24px
+        z-index: 1
+        overflow-x: auto
+        overflow-y: hidden
+        & .introducing__game-card
+            min-width: 312px
+            flex-grow: 1
+            text-align: left
+            &:hover .game-card
+                background-size: 105%
+                transition: background-size 0.2s
+        & .introducing__game-name
+            margin-top: 24px
+            font-family: PTSans-Bold
+            font-size: 20px
+            line-height: 120%
+        & .introducing__game-description
+            margin-top: 8px
+            opacity: 0.4
+
+    & .introducing__video
+        margin-top: 96px
+        width: 100vw
+        & video
+            position: absolute
+            left: 0
+            width: 100%
+            border-radius: 24px
+        & .introducing__video-glow
+            position: absolute
+            width: 1440px
+            height: 758px
+            border-radius: 1440px
+            background: $gradient-color
+            transform: translateY(300px)
+            filter: blur(300px)
+            @media screen and (max-width: 1200px)
+                transform: translateY(-100px)
+
+@keyframes flying-blue-ghost
+    0%
+        transform: translateY(-40px)
+    50%
+        transform: translateY(40px)
+    100%
+        transform: translateY(-40px)
+
+@keyframes flying-blue-ghost-small
+    0%
+        transform: translateY(-15px)
+    50%
+        transform: translateY(15px)
+    100%
+        transform: translateY(-15px)
+
+@keyframes flying-yellow-ghost
+    0%
+        transform: translate(-50%, -60%)
+    50%
+        transform: translate(-50%, -40%)
+    100%
+        transform: translate(-50%, -60%)

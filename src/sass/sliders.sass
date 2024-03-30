@@ -1,0 +1,64 @@
+.sliders
+    position: relative
+    margin-top: 144px
+    display: flex
+    flex-direction: column
+    gap: 96px
+    @media screen and (max-width: 1000px)
+        margin-top: 90px
+        gap: 80px
+
+
+    & .sliders__header
+        position: relative
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        z-index: 1
+        & .sliders__title
+            font-family: RussoOne-Regular
+            font-size: 40px
+            line-height: 120%
+            @media screen and (max-width: 1000px)
+                font-size: 32px
+            @media screen and (max-width: 700px)
+                font-size: 24px
+        & .sliders__controls
+            display: flex
+            gap: 8px
+            & .sliders__button
+                width: 56px
+                height: 56px
+                display: flex
+                justify-content: center
+                align-items: center
+                border-radius: 50%
+                border: solid 1px transparent
+                background-origin: border-box
+                background-clip: content-box, border-box
+                background-image: linear-gradient(#3c0981, #3c0981), linear-gradient(to top, #780BF5, #25C6F9)
+                & img
+                    height: 20px
+                    transition: height .1s
+                &.sliders__button_back img
+                    transform: rotate(180deg)
+                &:hover img
+                    height: 28px
+    
+    & .sliders__slider
+        margin-top: 40px
+        @media screen and (max-width: 700px)
+            margin-top: 24px
+        & .game-card
+            width: 312px
+            &.invisible
+                background: unset
+            & img
+                object-fit: contain
+
+    & .sliders__purple-glow
+        right: -800px
+        top: 200px
+        width: 1124px
+        height: 656px
